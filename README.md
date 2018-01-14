@@ -3,6 +3,8 @@ Distributed Denial of Service (DDoS)
 
 This is the example code that accompanies *Distributed Denial of Service: Practical Detection and Defense* by Eric Chou and Rich Groves. 
 
+Interested in a dialog regarding the topics in the book? Feel free to open an issue. 
+
 ```
 Did you want to download the code examples? click the Download Zip button to the right to download example code or .
 
