@@ -1,4 +1,4 @@
-Distributed Denial of Service (DDoS)
+Distributed Denial of Service: Practical Detection and Defense
 ==========
 
 This is the example code that accompanies *Distributed Denial of Service: Practical Detection and Defense* by Eric Chou and Rich Groves. 
