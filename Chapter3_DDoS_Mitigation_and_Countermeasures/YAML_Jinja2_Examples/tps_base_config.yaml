@@ -1,0 +1,42 @@
+---
+
+glid1: 
+  description: "\"10gbps rate limiter\"" 
+  bitRateLimit: 10000000
+
+
+glid2: 
+  description: "\"1gbps rate limiter\""
+  bitRateLimit: 1000000
+
+
+ddosZoneTemplateTCP:
+  name: "tcp-protect1"
+
+
+ddosZoneTemplateUDP:
+  name: "udp-protect1"
+  spoofDetectTimeout: 5
+  spoofDetectMinDelay: 2
+
+
+logging: 10.10.10.10
+
+
+bgp:
+  asn: 2
+  routerID: 11.11.11.11
+  routeMap:
+    ddosAdvertise: "ddos-advertise"
+  neighbors:
+    - ip: 12.12.12.12
+      remoteAS: 1
+      description: "upstream"
+    - ip: 13.13.13.13
+      remoteAS: 1
+      description: "downsteam"
+  
+ntpServer: 
+ - 1.1.1.1
+ - 2.2.2.2
+

@@ -1,0 +1,48 @@
+!
+system anomaly log
+system attack log
+system ddos-attack log
+!
+glid 1
+  description {{ config.glid1.description }}
+  bit-rate-limit {{ config.glid1.bitRateLimit }}
+!
+glid 2
+  description {{ config.glid2.description }}
+  bit-rate-limit {{ config.glid2.bitRateLimit }}
+!
+ddos protection enable
+ddos protection rate-interval 1sec
+!
+ddos zone-template tcp {{ config.ddosZoneTemplateTCP.name }}
+  syn-authentication send-rst
+  syn-authentication pass-action authenticate-src
+  syn-authentication fail-action drop
+!
+ddos zone-template udp {{ config.ddosZoneTemplateUDP.name }}
+  spoof-detect timeout {{ config.ddosZoneTemplateUDP.spoofDetectTimeout }}
+  spoof-detect min-delay {{ config.ddosZoneTemplateUDP.spoofDetectMinDelay }}
+  spoof-detect pass-action authenticate-src
+  spoof-detect fail-action drop
+  known-resp-src-port action drop
+!
+logging host {{ config.logging }}
+!
+router bgp {{ config.bgp.asn }}
+  bgp router-id {{ config.bgp.routerID }}
+  bgp log-neighbor-changes
+  {% for neighbor in config.bgp.neighbors %}
+  neighbor {{ neighbor.ip }} remote-as {{ neighbor.remoteAS }}
+  neighbor {{ neighbor.ip }} description {{ neighbor.description }}
+  neighbor {{ neighbor.ip }} route-map {{ config.bgp.routeMap.ddosAdvertise }} out
+  {% endfor %}
+!
+route-map ddos-advertise permit 1
+!
+{% for ntp_server in config.ntpServer %}
+ntp server {{ ntp_server }}
+{% endfor %}
+!
+!
+
+
