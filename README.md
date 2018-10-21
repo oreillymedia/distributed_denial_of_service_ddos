@@ -5,6 +5,8 @@ This is the example code that accompanies *Distributed Denial of Service: Practi
 
 **Interested in a dialog regarding the topics in the book? Feel free to open an issue.**
 
+**Update [10/21/2018]** Rich and I presented using Ansible for DDoS mitigation at AnsibleFest 2018. You can find the related contents [here](https://github.com/a10networks/ansiblefest2018). 
+
 ```
 Did you want to download the code examples? click the Download Zip button to the right to download example code or .
 
